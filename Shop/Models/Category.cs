@@ -9,6 +9,10 @@ namespace Shop.Models
 {
     public class Category
     {
+        public Category()
+        {
+            Products = new HashSet<Product>(); 
+        }
         [Key]
         public int Id { get; set; }
         [Required]
@@ -17,5 +21,7 @@ namespace Shop.Models
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Show order must be more then 0")]
         public int ShowOrder { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
