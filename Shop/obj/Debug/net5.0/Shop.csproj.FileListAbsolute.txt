@@ -434,3 +434,5 @@ F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Catego
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Products\Index.cshtml.g.cs
+F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Products\Upsert.cshtml.g.cs
+F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Products\Delete.cshtml.g.cs
