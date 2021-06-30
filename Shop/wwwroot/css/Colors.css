@@ -6,6 +6,14 @@
     color: #282833;
 }
 
+.bs-dark-light1 {
+    background-color: #323240;
+}
+
+.txt-dark-light1 {
+    color: #323240;
+}
+
 .bs-light {
     background-color: #e3e3e3;
 }
@@ -15,11 +23,11 @@
 }
 
 .bs-danger {
-    background-color: #ff7851;
+    background-color: #f3969a;
 }
 
 .txt-danger {
-    color: #ff7851;
+    color: #f3969a;
 }
 
 .bs-warning {
@@ -54,14 +62,6 @@
     color: #6cc3d5;
 }
 
-.bs-fluidark {
-    background-color: #343a40;
-}
-
-.txt-fluidark {
-    color: #343a40;
-}
-
 
 /* Fonts */
 
@@ -73,4 +73,8 @@
 .item-font {
     font-family: 'Google Sans', sans-serif;
     font-weight: 400;
+}
+
+.spacer {
+    letter-spacing: 1px;
 }

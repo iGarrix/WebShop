@@ -1,21 +1,45 @@
 ﻿@model Shop.Models.Product;
 
 <style>
-    img {
+    .img-card {
         background-size: contain;
-        width: 100%;
-        height: 100%;
+        width: 256px;
+        height: 236px;
     }
+
+    .card-template-hover h6 {
+        transition: .2s;
+    }
+
+    .card-template-hover:hover h6 {
+        color: #56cc9d;
+    }
+
+    .bordered {
+        border-bottom: 2px dashed #6cc3d5;
+        transition: .2s;
+    }
+
+        .bordered:hover {
+            border-bottom: 2px dashed #56cc9d;
+        }
 </style>
-<div class="card col-lg-4 col-md-6 table-bordered p-0 m-2 filter @Model.Category.Name">
-    <img src="~/Images/Products/@Model.Image" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title mb-1">@Model.Name</h5>
-        <p class="card-subtitle text-muted font-weight-bold mb-3">@Model.Category.Name</p>
-        <p class="card-text">@Html.Raw(Model.Description)</p>
-    </div>
-    <div class="card-footer">
-        <p class="m-0">Price : @Model.Price</p>
-        <a asp-action="Details" asp-route-id="@Model.Id">View Datails</a>
+<div class="bs-dark-light1 rounded bordered filter @Model.Category.Name" style="max-width: 256px;">
+    <a asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none">
+        <img src="~/Images/Products/@Model.Image" class="img-card rounded" alt="...">
+    </a>
+    <div class="pt-3 pl-3 pr-3 pb-2 txt-light">
+        <a asp-action="Details" asp-route-id="@Model.Id" class="card-template-hover text-decoration-none"><h6 class="txt-light head-font ">@Model.Name</h6></a>
+        <h3 class="item-font mt-3 txt-info">@Model.Price <i class="fas fa-hryvnia"></i></h3>
+        <div class="mt-2">
+            @if (Model.Category.ShowOrder > 10)
+            {
+                <p class="text-success item-font"><i class="fas fa-dolly"></i> Avaible</p>
+            }
+            else
+            {
+                <p class="text-danger item-font"><i class="fas fa-dolly"></i> Ending</p>
+            }
+        </div>
     </div>
 </div>

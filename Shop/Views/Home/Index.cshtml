@@ -3,14 +3,19 @@
 }
 @model Shop.Models.ViewModels.HomeVM;
 
-<link href="~/css/layot.css" rel="stylesheet" />
-<link href="~/css/Colors.css" rel="stylesheet" />
+<head>
+    <link href="~/css/layot.css" rel="stylesheet" />
+    <link href="~/css/Colors.css" rel="stylesheet" />
+</head>
 <script type="text/javascript">
     var main_header = document.querySelector(".hiddenable");
     main_header.hidden = true;
 </script>
 
 <style>
+    h1, h2,h3, h4,h5, h6, p {
+        margin: 0;
+    }
     a {
         transition: .5s
     }
@@ -18,21 +23,30 @@
         color: #282833;
         background-color: #e3e3e3;
     }
+    section {
+        min-height: 105vh;
+    }
+    .gapping {
+        gap: 1rem;
+    }
+    .form-check-label {
+        white-space: nowrap;
+    }
 </style>
 
-<div>
-    <header class="head overflow-hidden d-flex align-items-center">
+<div class="bs-dark overflow-hidden">
+    <header class="head overflow-hidden d-flex align-items-center" style="z-index:1;">
         <div>
             <img src="~/Images/background.jpg" class="back" alt="Alternate Text" />
             <div class="opacity"></div>
-            <nav class="navbar navbar-expand-lg navbar-dark navbarstick" style="z-index:1;">
+            <nav class="navbar navbar-expand-lg navbar-dark navbarstick">
                 <partial name="_header" />
             </nav>
         </div>
         <div class="w-100 text-center">
             <h1 class="head-font txt-light">Welcome to Shop15</h1>
-            <p class="item-font txt-light" style="font-size: 1.5rem">Go to the </p>
-            <a href="#contentsection" class="btn txt-light item-font bs-fluidark clickme" style="font-size: 1.2rem">Click me</a>
+            <p class="item-font txt-light mt-2" style="font-size: 1.5rem">Go to the </p>
+            <a href="#contentsection" class="btn txt-light item-font bs-fluidark clickme mt-3" style="font-size: 1.2rem">Click me</a>
         </div>
         <script type="text/javascript">
             window.addEventListener("scroll", function () {
@@ -41,29 +55,56 @@
             });
         </script>
     </header>
-    @*<section id="contentsection">
-        <div class="container">
-                <div class="text-center p-3">
-                    <button class="btn btn-dark filter-btn" data-filter="all">Show All</button>
-                    @foreach (var item in Model.Categories)
-                    {
-                        <button class="btn btn-dark filter-btn" data-filter="@item.Name">@item.Name</button>
-                    }
+
+    <section id="contentsection pb-3">
+        <div class="bs-dark-light1 pt-4 pb-4">
+            <div class="container">
+                <h2 class="txt-light item-font spacer"><i class="fas fa-filter txt-light"></i> Filter</h2>
+            </div>
+            <div class="container mt-4 d-flex txt-light item-font">
+                <div>
+                    <fieldset class="form-group d-flex">
+                        <legend class="mt-4">Categories filters</legend>
+                        <div class="container-fluid m-0">
+                            <div class="row gapping">
+                                <div class="form-check col-lg-2">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input filter-btn" name="optionsRadios" id="optionsRadios1"
+                                               data-filter="all" value="Filter all" checked="checked">
+                                        Filter all
+                                    </label>
+                                </div>
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <div class="col-lg-2">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input filter-btn" name="optionsRadios" id="optionsRadios1"
+                                                   data-filter="@item.Name" value="@item.Name">
+                                            @item.Name
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
-
-        <hr />
-
-            <div class="mt-3 container">
-                <div class="row mt-3 d-flex justify-content-center">
-                    @foreach (var item in Model.Products)
-                    {
-                        <partial model="item" name="_productCard" />
-                    }
-                </div>
+        </div>
+        <br />
+        <div class="mb-3 container pl-5">
+            <div class="row d-flex gapping">
+                @foreach (var item in Model.Products)
+                {
+                    <partial model="item" name="_productCard" />
+                }
             </div>
-    </section>*@
+        </div>
+        <br />
+    </section>
 </div>
+
+
+
 
 
 @section Scripts {
@@ -82,4 +123,3 @@
         })
     </script>
 }
-

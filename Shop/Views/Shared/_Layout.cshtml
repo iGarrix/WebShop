@@ -6,20 +6,23 @@
     <title>@ViewData["Title"] - Shop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/Colors.css" rel="stylesheet" />
 </head>
 <body>
     <header class="hiddenable">
-        <nav class="navbar navbar-expand-lg navbar-dark bs-dark" style="padding: 1.1rem 0">
+        <nav class="navbar navbar-expand-lg navbar-dark bs-dark" style="padding: .6rem 0">
             <partial name="_header" />
         </nav>
     </header>
 
-    @RenderBody()
+     @RenderBody()
 
-    <footer class="footer bs-dark">
-        <h3 class="text-center head-font txt-light">Shop15 - 2021</h3>
+    <footer class="footer txt-light item-font bs-dark border-top border-white">
+        <div class="container text-center" style="font-size: 1.1rem">
+            Shop15 - 2021
+        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
