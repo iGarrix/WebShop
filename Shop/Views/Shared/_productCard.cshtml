@@ -1,0 +1,21 @@
+﻿@model Shop.Models.Product;
+
+<style>
+    img {
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="card col-lg-4 col-md-6 table-bordered p-0 m-2 filter @Model.Category.Name">
+    <img src="~/Images/Products/@Model.Image" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title mb-1">@Model.Name</h5>
+        <p class="card-subtitle text-muted font-weight-bold mb-3">@Model.Category.Name</p>
+        <p class="card-text">@Html.Raw(Model.Description)</p>
+    </div>
+    <div class="card-footer">
+        <p class="m-0">Price : @Model.Price</p>
+        <a asp-action="Details" asp-route-id="@Model.Id">View Datails</a>
+    </div>
+</div>
