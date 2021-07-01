@@ -16,12 +16,10 @@
     h1, h2,h3, h4,h5, h6, p {
         margin: 0;
     }
-    a {
-        transition: .5s
-    }
     .clickme:hover {
-        color: #282833;
-        background-color: #e3e3e3;
+        border-bottom: 2px dashed white;
+        text-decoration: none;
+        color: white;
     }
     section {
         min-height: 105vh;
@@ -32,31 +30,44 @@
     .form-check-label {
         white-space: nowrap;
     }
+    .mls {
+        margin-left: 40px;
+    }
 </style>
 
 <div class="bs-dark overflow-hidden">
     <header class="head overflow-hidden d-flex align-items-center" style="z-index:1;">
         <div>
-            <img src="~/Images/background.jpg" class="back" alt="Alternate Text" />
+            @{
+                Random rnd = new Random();
+                var path = @"https://semantic-ui.com/images/backgrounds/" + rnd.Next(1, 16) + @".jpg";
+                <img src="@path" class="back" alt="alternate text" />
+            }
             <div class="opacity"></div>
             <nav class="navbar navbar-expand-lg navbar-dark navbarstick">
                 <partial name="_header" />
             </nav>
         </div>
         <div class="w-100 text-center">
-            <h1 class="head-font txt-light">Welcome to Shop15</h1>
-            <p class="item-font txt-light mt-2" style="font-size: 1.5rem">Go to the </p>
-            <a href="#contentsection" class="btn txt-light item-font bs-fluidark clickme mt-3" style="font-size: 1.2rem">Click me</a>
+            @{ 
+                List<string> titles = new List<string>()
+                { "Future devices for you!", "Large catalog", "Web store for you!" };
+                var titleIndex = rnd.Next(0, titles.Count);
+                <h1 class="head-font txt-light" id="test">@titles[titleIndex]</h1>
+                ViewData["Title"] = titles[titleIndex].ToString();
+            }
+            <p class="item-font txt-light mt-2 mb-3" style="font-size: 1.5rem">Next - More</p>
+            <a href="#contentsection" class="txt-light head-font clickme" style="font-size: 1.3rem">Next</a>
         </div>
         <script type="text/javascript">
             window.addEventListener("scroll", function () {
                 var header = document.querySelector(".navbarstick");
-                header.classList.toggle("sticky", this.window.scrollY > 0)
+                header.classList.toggle("sticky", this.window.scrollY > 0);
             });
         </script>
     </header>
 
-    <section id="contentsection pb-3">
+    <section id="contentsection">
         <div class="bs-dark-light1 pt-4 pb-4">
             <div class="container">
                 <h2 class="txt-light item-font spacer"><i class="fas fa-filter txt-light"></i> Filter</h2>
@@ -67,16 +78,16 @@
                         <legend class="mt-4">Categories filters</legend>
                         <div class="container-fluid m-0">
                             <div class="row gapping">
-                                <div class="form-check col-lg-2">
+                                <div class="form-check col-lg-2 col-md-3 col-sm-5">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input filter-btn" name="optionsRadios" id="optionsRadios1"
-                                               data-filter="all" value="Filter all" checked="checked">
+                                               data-filter="all" value="Filter all" checked>
                                         Filter all
                                     </label>
                                 </div>
                                 @foreach (var item in Model.Categories)
                                 {
-                                    <div class="col-lg-2">
+                                    <div class="form-check col-lg-2 col-md-3 col-sm-5">
                                         <label class="form-check-label">
                                             <input type="radio" class="form-check-input filter-btn" name="optionsRadios" id="optionsRadios1"
                                                    data-filter="@item.Name" value="@item.Name">
@@ -91,8 +102,8 @@
             </div>
         </div>
         <br />
-        <div class="mb-3 container pl-5">
-            <div class="row d-flex gapping">
+        <div class="mb-3 container d-flex pl-lg-5 pl-md-0">
+            <div class="row d-flex gapping mls">
                 @foreach (var item in Model.Products)
                 {
                     <partial model="item" name="_productCard" />

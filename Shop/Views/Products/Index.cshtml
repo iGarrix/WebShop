@@ -1,48 +1,44 @@
 ﻿
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Devices";
 }
 
 @model IEnumerable<Shop.Models.Product>;
-
-<div class="container">
-    <div class="mb-3">
-        <a class="btn btn-primary text-light" asp-action="Upsert">Add</a>
-    </div>
-    @if (Model.Count() > 0)
-    {
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Category</th>
-                    <th class="text-center">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                    <td>@item.Price</td>
-                    <td>@item.Category.Name</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <a class="btn btn-warning text-light pl-4 pr-4" asp-route-Id="@item.Id" asp-action="Upsert">Edit</a>
-                            <a class="btn btn-danger text-light pl-4 pr-4" asp-route-Id="@item.Id"  asp-action="Delete">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+<style>
+    section {
+        min-height: 105vh;
     }
-    else
-    {
-        <h1>Null</h1>
+    .gapping {
+        gap: 1rem;
     }
+    .mls {
+        margin-left: 40px;
+    }
+</style>
+<div class="bs-dark">
+    <section style="display:flex; flex-direction:column; gap: 1rem;">
+        <div class="bs-dark-light1 p-4" style="display: flex; gap: 1rem;">
+            <div class="container d-flex justify-content-center">
+                <a class="head-font txt-light btn bs-blue" asp-action="Upsert"><i class="fas fa-plus mr-2"></i> Add new device</a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            @if (true)
+            {
+                <div class="mb-3 container d-flex pl-lg-5 pl-md-0">
+                    <div class="row d-flex gapping mls">
+                        @foreach (var item in Model)
+                        {
+                            <partial model="item" name="_devProductCard" />
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <h1 class="head-font txt-light">Add new device!</h1>
+            }
+        </div>
+    </section>
 </div>
 

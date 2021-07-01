@@ -1,9 +1,109 @@
 ﻿@model Shop.Models.ViewModels.DetailsVM
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Product.Name;
 }
-<div class="d-flex justify-content-center align-items-center">
-    <h2>@Model.Product.Name</h2>
-</div>
+
+<style>
+    .heights {
+        min-height: 100vh;
+        max-width: calc(100vw - 2px);
+        height: 100%;
+    }
+    .gapping {
+        display: grid;
+        gap: 2rem;
+    }
+    .dashed {
+        border: 2px dashed white;
+    }
+    .asp {
+        transition: .2s;
+    }
+    .asp:hover {
+        text-decoration: none;
+        background-color: white;
+    }
+    .asp:hover h2 {
+        color: #323240;
+    }
+    .ssc {
+        position: sticky;
+        top: 80px;
+    }
+    .buybtn:hover {
+        background-color: white;
+    }
+</style>
+
+<section class="heights">
+    <div class="row heights bs-dark">
+        <div class="col d-flex flex-column align-items-center">
+            <div class="ssc bg-white rounded p-3">
+                 <img src="~/Images/Products/@Model.Product.Image" class="rounded" width="512" alt="Alternate Text"/>
+                 <div class="d-flex flex-column align-items-center mt-5">
+                     <h3 class="head-font txt-dark mb-3">Category @Model.Product.Category.Name</h3>           
+                     @if (Model.Product.Category.ShowOrder > 10)
+                     {
+                         <h4 class="text-success item-font m-0"><i class="fas fa-dolly"></i> Avaible</h4>
+                     }
+                     else
+                     {
+                         <h4 class="text-danger item-font m-0"><i class="fas fa-dolly"></i> Ending</h4>
+                     }
+                 </div>
+            </div>
+        </div>
+        <div class="col bs-dark">
+            <div class="container pt-5 pl-0 gapping">
+                <a href="#fulldetails" class="dashed asp rounded p-3 d-flex justify-content-center bs-dark">
+                    <h2 class="head-font txt-light m-0">@Model.Product.Category.Name Details</h2>
+                </a>
+                <div class="card bs-dark-light1">
+                    <div class="card-body">
+                        <h1 class="head-font txt-blue">@Model.Product.Price <i class="fas fa-hryvnia"></i></h1>
+                    </div>
+                    <div class="card-footer d-flex">
+                        @if (Model.Product.Category.ShowOrder > 20)
+                        {
+                            <h5 class="text-success item-font">
+                                <i class="fas fa-dolly"></i>
+                                Avaible
+                                <i class="fas fa-chevron-right ml-2 mr-2"></i>
+                                Ordered
+                                @Model.Product.Category.ShowOrder
+                            </h5>
+                        }
+                        else
+                        {
+                            <h5 class="text-danger item-font">
+                                <i class="fas fa-dolly"></i>
+                                Ending
+                                <i class="fas fa-chevron-right ml-2 mr-2"></i>
+                                Ordered
+                                @Model.Product.Category.ShowOrder
+                            </h5>
+                        }
+                    </div>
+                </div>
+                <div class="card bs-dark-light1" id="fulldetails">
+                    <div class="card-body">
+                        <h3 class="head-font txt-light">@Model.Product.Name</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bs-dark-light1">
+                            <h4 class="head-font txt-info mb-3">Short Description</h4>
+                            <h5 class="item-font txt-info">@Model.Product.ShortDesc</h5>
+                        </li>
+                        <li class="list-group-item bs-dark-light1">
+                            <h4 class="head-font txt-info mb-4">Full Description</h4>
+                            <h5 class="item-font txt-info">@Html.Raw(Model.Product.Description)</h5>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" class="btn head-font bs-successfull txt-light p-4 buybtn" style="font-size: 1.2rem; letter-spacing: 1px;">Buy for @Model.Product.Price <i class="fas fa-hryvnia"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
 

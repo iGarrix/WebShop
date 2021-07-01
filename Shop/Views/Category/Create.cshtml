@@ -1,52 +1,72 @@
 ﻿
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create new category";
 }
 
 @model Category;
 
-<form method="post" asp-controller="Category" asp-action="Create">
-    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-    <div class="border p-3">
-        <div class="form-group row">
-            <h2 class="text-info pl-3">Add Category</h2>
+<style>
+    .heights {
+        min-height: 60vh;
+        max-width: calc(100vw - 2px);
+        height: 100%;
+    }
+
+    .supra {
+        border: 2px dashed white;
+        border-radius: 1rem;
+    }
+</style>
+<section class="heights bs-dark">
+    <form method="post" asp-controller="Category" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="bs-dark-light1 p-4">
+            <div class="container">
+                <h2 class="head-font txt-light m-0">Create category </h2>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-8">
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Name"></label>
-                    </div>
-                    <div class="col-8">
+        <div class="container">
+            <div class="row d-flex align-items-end">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="names" class="form-label mt-4 head-font txt-light" style="font-size: 22px;">Name Category</label>
                         <input asp-for="Name" class="form-control" />
-                        <span class="text-danger" asp-validation-for="Name"></span>
+                        <small class="form-text text-muted item-font">Enter name for category</small>
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="ShowOrder"></label>
-                    </div>
-                    <div class="col-8">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="names" class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Show Orders</label>
+                        <label asp-for="ShowOrder" class="control-label"></label>
                         <input asp-for="ShowOrder" class="form-control" />
-                        <span class="text-danger" asp-validation-for="ShowOrder"></span>
+                        <small class="form-text text-muted item-font">Enter show orders category <span class="txt-successfull">(Avaible)</span></small>
+                        <span asp-validation-for="ShowOrder" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-8 offset-4 row">
-                        <div class="col">
-                            <input type="submit" class="btn btn-success w-100" value="Create" />
-                        </div>
-                        <div class="col">
-                            <a asp-controller="Category" asp-action="Index" class="btn btn-warning">Back</a>
+            </div>
+
+
+        </div>
+        <div class="container bs-dark" style="display: grid;">
+            <div class="heights d-flex align-items-center">
+                <div style="width: 100%">
+                    <div class="bs-dark-light1 p-4 supra" style="transform: translateY(-100%); width: 100%; margin-top:30vh;">
+                        <h2 class="txt-successfull head-font mb-4 text-center">Creating...</h2>
+                        <div class="text-center">
+                            <input type="submit" value="Create" class="btn bs-successfull head-font txt-light" style="font-size: 20px; width: 15%" />
+                            <a asp-action="Index" class="head-font btn bs-successfull txt-light" style="font-size: 20px; width: 15%">Back to List</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</section>
 
 @section Scripts {
-    @{ <partial name="_ValidationScriptsPartial" />};
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    };
 }
 

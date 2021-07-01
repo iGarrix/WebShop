@@ -1,42 +1,72 @@
 ﻿@model Shop.Models.Category
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = $"Edit ${Model.Name}";
 }
 
-<h1>Edit</h1>
+<style>
+    .heights {
+        min-height: 60vh;
+        max-width: calc(100vw - 2px);
+        height: 100%;
+    }
+    .supra {
+        border: 2px dashed white;
+        border-radius: 1rem;
+    }
+</style>
+<section class="heights bs-dark">
+    <form method="post" asp-controller="Category" asp-action="EditPost">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="bs-dark-light1 p-4">
+            <div class="container">
+                <h2 class="head-font txt-light m-0">Edit category </h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row d-flex align-items-end">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="names" class="form-label mt-4 head-font txt-light" style="font-size: 22px;">Name Category</label>
+                        <input asp-for="Name" class="form-control" />
+                        <small class="form-text text-muted item-font">Enter name for category</small>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="names" class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Show Orders</label>
+                        <label asp-for="ShowOrder" class="control-label"></label>
+                        <input asp-for="ShowOrder" class="form-control" />
+                        <small class="form-text text-muted item-font">Enter show orders category <span class="txt-successfull">(Avaible)</span></small>
+                        <span asp-validation-for="ShowOrder" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-controller="Category" asp-action="EditPost">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShowOrder" class="control-label"></label>
-                <input asp-for="ShowOrder" class="form-control" />
-                <span asp-validation-for="ShowOrder" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        </div>
+        <div class="container bs-dark" style="display: grid;">
+            <div class="heights d-flex align-items-center">
+                <div style="width: 100%">
+                    <div class="bs-dark-light1 p-4 supra" style="transform: translateY(-100%); width: 100%; margin-top:30vh;">
+                        <h2 class="txt-danger head-font mb-1 text-center">Updating...</h2>
+                        <h6 class="text-muted item-font mb-4 text-center">Are you sure updating this category?</h6>
+                        <div class="text-center">
+                            <input type="submit" value="Update" class="btn bs-danger head-font txt-light" style="font-size: 20px; width: 15%" />
+                            <a asp-action="Index" class="head-font btn bs-successfull txt-light" style="font-size: 20px; width: 15%">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
 
 
 @section Scripts {
     @{
         <partial name="_ValidationScriptsPartial" />
-        };
+    }
 }

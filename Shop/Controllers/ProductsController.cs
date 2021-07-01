@@ -62,16 +62,26 @@ namespace Shop.Controllers
 
                 string uploads = webRootPath + ENV.imagepass;
                 string FileName = Guid.NewGuid().ToString();
-                string FileExt = Path.GetExtension(files[0].FileName);
+                string FileExt = ".png";
+                if (files.Count > 0)
+                {
+                    FileExt = Path.GetExtension(files[0].FileName);
+                }
 
                 if (productVM.Product.Id == 0)
-                {                 
-                    using (var fs = new FileStream(Path.Combine(uploads, FileName + FileExt), FileMode.Create))
+                {
+                    if (files.Count > 0)
                     {
-                        files[0].CopyTo(fs);
+                        using (var fs = new FileStream(Path.Combine(uploads, FileName + FileExt), FileMode.Create))
+                        {
+                            files[0].CopyTo(fs);
+                        }
+                        productVM.Product.Image = FileName + FileExt;
                     }
-
-                    productVM.Product.Image = FileName + FileExt;
+                    else
+                    {
+                        productVM.Product.Image = "null" + FileExt;
+                    }
                     _db.Products.Add(productVM.Product);
                 }
                 else
@@ -92,8 +102,7 @@ namespace Shop.Controllers
                     }
                     else
                     {
-                        productVM.Product.Image = formObj.Image;
-
+                        productVM.Product.Image = "null.jpg";
                     }
                     _db.Products.Update(productVM.Product);
                 }
@@ -135,9 +144,12 @@ namespace Shop.Controllers
             string uploads = webRootPath + ENV.imagepass;
             string path = Path.Combine(uploads, products.Image);
 
-            if (System.IO.File.Exists(path))
+            if (products.Image != "null.png")
             {
-                System.IO.File.Delete(path);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
             }
 
             _db.Products.Remove(products);

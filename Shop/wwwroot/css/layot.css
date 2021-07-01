@@ -8,10 +8,10 @@
     background-color: #3b3b3b;
     width: 100%;
     min-height: 105vh;
-    filter: opacity(50%);
+    filter: opacity(45%) invert(10%);
 }
 
-.back, .opacity {
+.back, .opacity{
     position: absolute;
     top: 0;
     z-index: -1;
@@ -28,7 +28,7 @@
 }
 
 .sticky {
-    padding: .6rem 0;
+    padding: .7rem 0;
     background-color: #282833;
 }
 

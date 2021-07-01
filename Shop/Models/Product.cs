@@ -14,8 +14,11 @@ namespace Shop.Models
 
         [Required]
         public string Name { get; set; }
+        [Required]
         public string ShortDesc { get; set; }
+        [Required]
         public string Description { get; set; }
+
 
         [Range(1, int.MaxValue, ErrorMessage = "Range is valid")]
         public double Price { get; set; }
