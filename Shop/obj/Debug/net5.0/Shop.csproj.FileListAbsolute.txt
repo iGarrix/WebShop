@@ -441,3 +441,4 @@ F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Home\D
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_header.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_devProductCard.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_devCategoryCard.cshtml.g.cs
+F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Home\RemoveFromCart.cshtml.g.cs

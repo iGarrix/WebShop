@@ -8,5 +8,6 @@ namespace Shop
     public sealed class ENV
     {
         public const string imagepass = @"\images\products\";
+        public const string SessionCard = "ShoppingCartSession";
     }
 }

@@ -5,7 +5,7 @@
 
 .opacity {
     position: absolute;
-    background-color: #3b3b3b;
+    background-color: #000000;
     width: 100%;
     min-height: 105vh;
     filter: opacity(45%) invert(10%);
