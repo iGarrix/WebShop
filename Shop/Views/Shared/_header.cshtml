@@ -19,7 +19,7 @@
             <li class="nav-item">
                 <a class="nav-link item-font" asp-area="" asp-controller="Products" asp-action="Index"><i class="fas fa-mobile" style="font-size: 18px;"></i> Device</a>
             </li>
-            <li class="nav-item ml-auto">
+            <li class="nav-item">
                 @if (HttpContextAccessor.HttpContext.Session.Get<List<ShoppingCart>>(ENV.SessionCard) != null)
                 {
                     <a class="nav-link item-font" asp-area="" asp-controller="Cart" asp-action="Index">
@@ -34,12 +34,9 @@
                     <a href="#" class="nav-link item-font"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
                 }
             </li>
-            @*<li class="nav-item ml-auto">
-                <a class="nav-link item-font" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-sign-in-alt mr-1"></i> Sign in</a>
+            <li class="nav-item ml-auto">
+                <partial name="_LoginPartial" />
             </li>
-            <li class="nav-item">
-                <a class="nav-link item-font" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-user-plus mr-1"></i> Register</a>
-            </li>*@
         </ul>
     </div>
 </div>

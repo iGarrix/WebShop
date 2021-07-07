@@ -1,0 +1,51 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<style>
+    .borders {
+        border-top: 2px dashed #f3969a;
+        border-bottom: 2px dashed #f3969a;
+    }
+    .resendbtn {
+        border: 2px dashed #56cc9d;
+        color: white;
+        width: 12rem;
+    }
+
+        .resendbtn:hover {
+            background-color: #56cc9d;
+        }
+
+    .bordereds {
+        border: 2px solid #56cc9d;
+    }
+</style>
+<div class="bs-dark head-font" style="min-height: 90vh;">
+    <div class="bs-dark-light1 p-4 borders">
+        <div class="container d-flex justify-content-center">
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+    </div>
+    <div class="container mt-5 txt-light head-font" style="max-width: 60vw;">
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <div class="bordereds d-flex align-items-center p-4 justify-content-lg-between flex-lg-row flex-md-column flex-sm-column rounded bs-dark-light1 mt-5">
+                        <div>
+                            <h3 class="txt-light head-font m-0">Click here to Logout...</h3>
+                        </div>
+                        <button type="submit" class="btn head-font resendbtn">Logout</button>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <p>You have successfully logged out of the application.</p>
+            }
+        }
+    </div>
+</div>

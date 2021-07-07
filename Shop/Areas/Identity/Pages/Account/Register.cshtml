@@ -1,0 +1,109 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .supra {
+        border: 2px solid #56cc9d;
+        border-radius: .5rem;      
+    }
+    .btns {
+        color: #56cc9d;
+        border: 2px dashed #56cc9d;
+    }
+    .btns:hover {
+        background-color: #56cc9d;
+    }
+</style>
+
+<div class="bs-dark">
+    <div class="bs-dark-light1 p-4" style="display: flex; gap: 1rem;">
+        <div class="container d-flex justify-content-center">         
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+    </div>
+    <div class="container mt-5" style="margin: auto; max-width: 60vw;">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="txt-light">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Input.appuser.Name"></label>
+                        <input asp-for="Input.appuser.Name" placeholder="Name" class="form-control" />
+                        <span asp-validation-for="Input.appuser.Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Input.appuser.Surname"></label>
+                        <input asp-for="Input.appuser.Surname" placeholder="Surname" class="form-control" />
+                        <span asp-validation-for="Input.appuser.Surname" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.appuser.Age"></label>
+                <input asp-for="Input.appuser.Age" placeholder="Age" class="form-control" />
+                <span asp-validation-for="Input.appuser.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" placeholder="Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.appuser.Gender"></label>
+                <select asp-for="Input.appuser.Gender" class="form-control">
+                    <option disabled selected>Select Genger</option>
+                    <option value="Male">Famale</option>
+                    <option value="Male">Male</option>
+                </select>
+                <span asp-validation-for="Input.appuser.Gender" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Input.appuser.City"></label>
+                        <input asp-for="Input.appuser.City" placeholder="City" class="form-control" />
+                        <span asp-validation-for="Input.appuser.City" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Input.appuser.Country"></label>
+                        <input asp-for="Input.appuser.Country" placeholder="Country" class="form-control" />
+                        <span asp-validation-for="Input.appuser.Country" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" placeholder="Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" placeholder="Confirm password" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bs-dark-light1 p-4 supra" style="transform: translateY(-100%); width: 100%; margin-top:30vh;">
+                <h2 class="txt-successfull head-font mb-4 text-center">Create user...</h2>
+                <div class="text-center">
+                    <input type="submit" value="Register" class="btn head-font btns" style="font-size: 20px; width: 18%;" />
+                    <a asp-action="Index" class="head-font btn btns" style="font-size: 20px; width: 18%; white-space: nowrap;">Go to Shop</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :base(options)
         {
@@ -16,5 +17,6 @@ namespace Shop.Data
 
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<AppUser> AppUser { get; set; }
     }
 }
