@@ -1,6 +1,12 @@
 ﻿@page
 @model RegisterModel
-@{
+
+@if (User.IsInRole(Shop.ENV.AdminRole))
+{
+    ViewData["Title"] = "Create Admin";
+}
+else
+{
     ViewData["Title"] = "Register";
 }
 
@@ -94,9 +100,24 @@
                 </div>
             </div>
             <div class="bs-dark-light1 p-4 supra" style="transform: translateY(-100%); width: 100%; margin-top:30vh;">
-                <h2 class="txt-successfull head-font mb-4 text-center">Create user...</h2>
+                @if (User.IsInRole(Shop.ENV.AdminRole))
+                {
+                    <h2 class="txt-successfull head-font mb-4 text-center">Create user...</h2>
+                }
+                else
+                {
+                    <h2 class="txt-successfull head-font mb-4 text-center">Create admin...</h2>
+                }
+                
                 <div class="text-center">
-                    <input type="submit" value="Register" class="btn head-font btns" style="font-size: 20px; width: 18%;" />
+                    @if (User.IsInRole(Shop.ENV.AdminRole))
+                    {
+                        <input type="submit" value="Create admin" class="btn head-font btns" style="font-size: 20px; width: 18%;" />
+                    }
+                    else
+                    {
+                        <input type="submit" value="Register" class="btn head-font btns" style="font-size: 20px; width: 18%;" />
+                    }
                     <a asp-action="Index" class="head-font btn btns" style="font-size: 20px; width: 18%; white-space: nowrap;">Go to Shop</a>
                 </div>
             </div>
