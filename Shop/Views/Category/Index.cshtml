@@ -37,16 +37,8 @@
                 <div class="mb-3 container d-flex pl-lg-5 pl-md-0">
                     <div class="row d-flex gapping mls">
                         @foreach (var item in Model)
-                        {
-                            if (User.IsInRole(ENV.AdminRole))
-                            {
-
-                                <partial model="item" name="_devCategoryCard" />
-                            }
-                            else
-                            {
-                                <partial model="item" name="_categoryCard" />
-                            }
+                        {      
+                            <partial model="item" name="_categoryCard" />
                         }
                     </div>
                 </div>

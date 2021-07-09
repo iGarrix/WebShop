@@ -35,5 +35,14 @@
             <h3 class="head-font txt-warning priceitem">@Model.ShowOrder <i class="fas fa-dolly"></i></h3>
         </div>
     </div>
+    @if (User.IsInRole(ENV.AdminRole))
+    {
+        <div class="card-footer p-0 pb-1">
+            <div class="d-flex p-0">
+                <a class="p-2 text-center bg-transparent txt-successfull rounded-0 item-font btneffect" style="width: 50%;" asp-route-Id="@Model.Id" asp-action="Edit"><i class="fas fa-edit"></i></a>
+                <a class="p-2 text-center bg-transparent txt-danger rounded-0 item-font btneffect" style="width: 50%;" asp-route-Id="@Model.Id" asp-action="Delete"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+    }
 </div>
 

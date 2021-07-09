@@ -75,7 +75,7 @@ namespace Shop.Controllers
         }
 
         [HttpPost, ActionName("Details")]
-        public IActionResult DetailPost(int id )
+        public IActionResult DetailPost(int id)
         {
             List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
             if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(ENV.SessionCard) != null &&
