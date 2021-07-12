@@ -434,8 +434,6 @@ F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Produc
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_productCard.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_header.cshtml.g.cs
-F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_devProductCard.cshtml.g.cs
-F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_devCategoryCard.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\bin\Debug\net5.0\Shop.StaticWebAssets.xml
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
