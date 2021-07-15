@@ -110,5 +110,21 @@ namespace Shop.Controllers
             };
             return View(productUserVM);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Order")]
+        public IActionResult OrderPost(ProductUserVM productUserVM)
+        {
+            // send email 
+
+            return RedirectToAction(nameof(OrderConfirmarion));
+        }
+
+        public IActionResult OrderConfirmarion()
+        {
+            //HttpContext.Session.Clear();
+            return View();
+        }
     }
 }

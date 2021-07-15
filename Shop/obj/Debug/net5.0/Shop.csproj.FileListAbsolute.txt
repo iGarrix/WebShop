@@ -489,3 +489,5 @@ F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Cart\Details.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Shared\_categoryCard.cshtml.g.cs
 F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Cart\Order.cshtml.g.cs
+F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\bin\Debug\net5.0\Mailjet.Client.dll
+F:\source\repos\VS.ASP-NET\ASP.NET\Shop\Shop\obj\Debug\net5.0\Razor\Views\Cart\OrderConfirmarion.cshtml.g.cs
