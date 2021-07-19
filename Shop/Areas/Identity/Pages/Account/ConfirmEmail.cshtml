@@ -4,4 +4,29 @@
     ViewData["Title"] = "Confirm email";
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    .height {
+        min-height: 81.4vh;
+    }
+    .btnnext {
+        text-decoration: none;
+        padding: .5rem;
+        color: white;
+        border-bottom: 2px dashed white;
+        transition: .2s;
+        font-size: 18px;
+    }
+    .btnnext:hover {
+        cursor: pointer;
+        text-decoration: none;
+        color: #2389e0;
+        border-bottom: 2px dashed #2389e0;
+    }
+</style>
+
+<div class="bs-dark">
+    <div class="height container d-flex justify-content-center align-items-center flex-column">
+        <h2 class="head-font txt-light">Thanks for confirmed email!</h2>
+        <a asp-action="Index" asp-controller="Home" class="btnnext head-font">Home</a>
+    </div>
+</div>
