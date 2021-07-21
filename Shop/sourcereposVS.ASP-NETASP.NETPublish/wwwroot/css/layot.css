@@ -1,0 +1,37 @@
+﻿.head {
+    position: relative;
+    min-height: 105vh;
+}
+
+.opacity {
+    position: absolute;
+    background-color: #000000;
+    width: 100%;
+    min-height: 105vh;
+    filter: opacity(45%) invert(10%);
+}
+
+.back, .opacity{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.navbarstick {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 2rem 0;
+    transition: .5s ease;
+    background-color: transparent;
+}
+
+.sticky {
+    padding: .7rem 0;
+    background-color: #282833;
+}
+
+ul li a {
+    transition: 0.2s;
+}
