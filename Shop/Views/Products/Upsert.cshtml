@@ -1,0 +1,104 @@
+﻿@model Shop.Models.ViewModels.ProductVM;
+
+    <style>
+        .heights {
+            min-height: 100vh;
+            max-width: calc(100vw - 2px);
+            height: 100%;
+        }
+        .ssc {
+            position: sticky;
+            top: 80px;
+        }
+    </style>
+
+    <form method="post" enctype="multipart/form-data" class="mb-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <section class="heights">
+            <div class="row heights bs-dark">
+                <div class="col bs-dark">
+                    <div class="container pl-5 pr-0">
+                        <div class="form-group">
+                            <label for="names" class="form-label mt-4 head-font txt-light" style="font-size: 22px;">Name device</label>
+                            <input asp-for="Product.Name" class="form-control item-font" id="names" placeholder="Enter name">
+                            <small class="form-text text-muted item-font">Enter name you device with short description text</small>
+                            <span class="text-danger" asp-validation-for="Product.Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="prices" class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Price in uan</label>
+                            <input asp-for="Product.Price" class="form-control item-font" id="prices" placeholder="Enter price">
+                            <small class="form-text text-muted item-font">Enter price your device</small>
+                            <span class="text-danger" asp-validation-for="Product.Price"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="sd" class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Short Description</label>
+                            <input asp-for="Product.ShortDesc" class="form-control item-font" id="sd" placeholder="Enter short description">
+                            <small class="form-text text-muted item-font">Enter short description</small>
+                            <span class="text-danger" asp-validation-for="Product.ShortDesc"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Full Description</label>
+                            <div class="bs-light">
+                                <textarea asp-for="Product.Description" class="form-control item-font" id="summernote" placeholder="Enter description"></textarea>
+                            </div>
+                            <small class="form-text text-muted item-font">Enter full description</small>
+                            <span class="text-danger" asp-validation-for="Product.Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Upload Image</label>
+                            <input type="file" asp-for="Product.Image" name="files" id="upload" multiple class="form-control item-font bs-dark border-0 txt-light" />
+                            <small class="form-text text-muted item-font">Upload image your device</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label mt-2 head-font txt-light" style="font-size: 22px;">Category device</label>
+                            <select asp-for="Product.CategoryId" asp-items="@Model.CategorySelectList" class="form-control">
+                                <option disabled selected>Select Category</option>
+                            </select>
+                            <small class="form-text text-muted item-font">Enter full description</small>
+                            <span class="text-danger" asp-validation-for="Product.CategoryId"></span>
+                        </div>
+                        <div class="form-group">
+                            <h3 class="head-font txt-light mt-2" style="font-size: 22px;"> Action</h3>
+                            <div class="d-flex p-0">
+                                @if (Model.Product.Id != 0)
+                                {
+                                    <button type="submit" class="btn border bs-light head-font txt-dark" style="width: 20%;"><i class="far fa-save"></i> Update</button>
+                                    ViewData["Title"] = "Updating device";
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn border bs-light head-font txt-dark" style="width: 20%"><i class="fas fa-plus"></i> Create</button>
+                                    ViewData["Title"] = "Added device";
+                                }
+                                <a asp-action="Index" class="p-2 text-center bs-light txt-dark rounded head-font btneffect ml-3 text-decoration-none" style="width: 20%"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.Product.Id != 0)
+                {
+                    <div class="col d-flex flex-column align-items-center">
+                        <div class="ssc bg-white rounded p-3">
+                            <input asp-for="Product.Id" hidden />
+                            <img src="@ENV.imagepass@Model.Product.Image" class="rounded" width="512" alt="Device" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+        ;
+    }
+    <script>
+      $('#summernote').summernote({
+        tabsize: 2,
+        height: 120,
+      });
+    </script>
+}
+
+

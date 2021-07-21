@@ -1,0 +1,60 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+<style>
+    .borders {
+        border: 2px solid #f3969a;
+    }
+    .btnborders {
+        color: white;
+        border: 2px dashed #f3969a;
+        width: 15rem;
+    }
+    .btnborders:hover {
+        background-color: #f3969a;
+    }
+
+    .borders2 {
+        border: 2px solid #56cc9d;
+    }
+
+    .btnborders2 {
+        color: white;
+        border: 2px dashed #56cc9d;
+        width: 15rem;
+    }
+
+        .btnborders2:hover {
+            background-color: #56cc9d;
+        }
+</style>
+<div class="bs-dark">
+    <div class="bs-dark-light1 p-5">
+        <div class="container d-flex justify-content-center">
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+        <p class="head-font txt-warning text-center m-0 mt-3">Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+        <p class="item-font txt-danger text-center m-0">
+            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+        </p>
+        <div class="container mt-5">
+            <div class="bs-dark p-4 d-flex justify-content-between align-items-center rounded borders2">
+                <h4 class="txt-successfull head-font m-0">Download personalData.json</h4>
+                <form id="download-data" asp-page="DownloadPersonalData" method="post" class="form-group m-0">
+                    <button class="btn btnborders2 head-font m-0" type="submit">Download JSON Data...</button>
+                </form>
+            </div>
+            <div class="bs-dark p-4 d-flex justify-content-between align-items-center rounded mt-4 borders">
+                <h4 class="txt-danger head-font m-0">Delete all data and account...</h4>                
+                <a id="delete" asp-page="DeletePersonalData" class="btn btnborders head-font">Deleting account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

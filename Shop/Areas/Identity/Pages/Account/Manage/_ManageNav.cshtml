@@ -1,0 +1,29 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<style>
+    .alinks {
+        color: white;
+    }
+    .alinks:hover {
+        color: #008aff;
+    }
+    i {
+        font-size: 1.4rem;
+    }
+    .active {
+        background-color: #56cc9d;
+    }
+</style>
+<ul class="nav nav-pills flex-row justify-content-center" style="gap: 1.2rem">
+    <li class="nav-item"><a class="nav-link alinks @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile"><i class="fas fa-user"></i></a></li>
+    <li class="nav-item"><a class="nav-link alinks @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Email"><i class="fas fa-envelope"></i></a></li>
+    <li class="nav-item"><a class="nav-link alinks @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change password"><i class="fas fa-key"></i></a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link alinks @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins" data-bs-toggle="tooltip" data-bs-placement="bottom" title="External login"><i class="fas fa-external-link-alt"></i></a></li>
+    }
+    <li class="nav-item"><a class="nav-link alinks @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Two factor authentication"><i class="fas fa-street-view"></i></a></li>
+    <li class="nav-item"><a class="nav-link alinks @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Personal data"><i class="fas fa-user-cog"></i></a></li>
+</ul>

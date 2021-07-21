@@ -1,0 +1,68 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Manage Email";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<style>
+    .resendbtn {
+        border: 2px dashed #56cc9d;
+        color: white;
+        width: 12rem;
+    }
+
+        .resendbtn:hover {
+            background-color: #56cc9d;
+        }
+
+    .bordereds {
+        border: 2px solid #56cc9d;
+    }
+</style>
+
+<div class="bs-dark" style="min-height: 100vh;">
+    <div class="bs-dark-light1 p-4" style="display: flex; gap: 1rem;">
+        <div class="container d-flex justify-content-center">
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+    </div>
+    <div class="container txt-light item-font mt-5 mb-5" style="max-width: 60vw">
+        <partial name="_StatusMessage" model="Model.StatusMessage" />
+        <form id="email-form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                @if (Model.IsEmailConfirmed)
+                {
+                    <div class="input-group">
+                        <input asp-for="Email" class="form-control" disabled />
+                        <div class="input-group-append">
+                            <span class="input-group-text text-success font-weight-bold">✓</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <input asp-for="Email" class="form-control" disabled />
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.NewEmail"></label>
+                <input asp-for="Input.NewEmail" class="form-control" />
+                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            </div>
+            <div class="bordereds d-flex align-items-center p-4 justify-content-lg-between flex-lg-row flex-md-column flex-sm-column rounded bs-dark-light1 mt-5">
+                <div>
+                    <h2 class="txt-light head-font m-0">Change email...</h2>
+                </div>
+                <button type="submit" id="change-email-button" class="btn head-font resendbtn" asp-page-handler="ChangeEmail">Change email</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+}
+@model IEnumerable<Shop.Models.Product>;
+<style>
+    section {
+        min-height: 105vh;
+    }
+
+    .gapping {
+        gap: 1rem;
+    }
+
+    .mls {
+        margin-left: 40px;
+    }
+    .btneffect {
+        font-size: 22px;
+    }
+    .btneffect:hover {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<div class="bs-dark">
+    <section style="display:flex; flex-direction:column; gap: 1rem;">
+        <div class="bs-dark-light1 p-4">
+            <div class="container d-flex justify-content-center">
+                <h1 class="text-white">Your products</h1>
+            </div>
+            <div class="container d-flex justify-content-center">
+                <a class="p-2 text-center bg-transparent txt-successfull rounded-0 item-font btneffect" style="width: 50%;" asp-action="Order"><i class="fas fa-dolly"></i> Order all</a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            @if (Model.Count() > 0)
+            {
+                <div class="mb-3 container d-flex pl-lg-5 pl-md-0">
+                    <div class="row d-flex gapping mls">
+                        @foreach (var item in Model)
+                        {
+                            <partial model="item" name="_cartProduct" />
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <h3 class="head-font txt-light">Add new device!</h3>
+            }
+        </div>
+    </section>
+</div>

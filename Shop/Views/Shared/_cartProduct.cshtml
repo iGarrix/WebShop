@@ -1,0 +1,63 @@
+﻿@model Shop.Models.Product;
+
+<style>
+    .img-card {
+        background-size: cover;
+        max-width: 222px;
+        max-height: 206px;
+    }
+
+    .card-template-hover h6 {
+        transition: .2s;
+    }
+
+    .card-template-hover:hover h6 {
+        color: #56cc9d;
+    }
+
+    .bordered {
+        border-bottom: 2px solid #6cc3d5;
+        transition: .2s;
+    }
+
+        .bordered:hover {
+            border-bottom: 2px double #56cc9d;
+        }
+
+    .btneffect:hover {
+        color: white;
+    }
+
+    .hovered:hover {
+        transform: scale(1.040);
+    }
+</style>
+<div class="card bs-dark-light1 rounded prices bordered hovered filter @Model.Category.Name" style="max-width: 226px;">
+    <a asp-controller="Cart" asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none bg-white rounded card-img-top d-flex align-items-center" style="width: 222px; height: 206px;">
+        <img src="~/Images/Products/@Model.Image" class="img-card rounded" alt="...">
+    </a>
+    <div class="card-body p-3">
+        <a asp-controller="Cart" asp-action="Details" asp-route-id="@Model.Id" class="card-template-hover text-decoration-none"><h6 class="txt-light head-font">@Model.Name</h6></a>
+    </div>
+    <div class="p-3">
+        <div class="d-flex">
+            <h3 class="item-font txt-warning priceitem">@Model.Price <i class="fas fa-hryvnia"></i></h3>
+            <h5 class="item-font txt-danger align-self-end ml-2">uan</h5>
+        </div>
+        <div class="mt-2">
+            @if (Model.Category.ShowOrder > 20)
+            {
+                <p class="txt-successfull item-font mb-0"><i class="fas fa-dolly"></i> Avaible</p>
+            }
+            else
+            {
+                <p class="txt-danger item-font mb-0"><i class="fas fa-dolly"></i> Ending</p>
+            }
+        </div>
+    </div>
+    <div class="card-footer p-0 pb-1">
+        <div class="d-flex p-0 justify-content-center">
+            <a class="p-2 text-center bg-transparent txt-successfull rounded-0 item-font btneffect" asp-route-Id="@Model.Id" asp-action="RemoveFromCart"><i class="fas fa-trash"></i></a>           
+        </div>
+    </div>
+</div>

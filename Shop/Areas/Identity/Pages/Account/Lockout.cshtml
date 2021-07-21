@@ -1,0 +1,20 @@
+﻿@page
+@model LockoutModel
+@{
+    ViewData["Title"] = "Locked out";
+}
+
+<style>
+    .borders {
+        border-top: 2px dashed #f3969a;
+        border-bottom: 2px dashed #f3969a;
+    }
+</style>
+<div class="bs-dark head-font" style="min-height: 90vh;">
+    <div class="bs-dark-light1 p-4 borders">
+        <div class="container d-flex justify-content-center">
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+        <p class="txt-danger text-center">This account has been locked out, please try again later.</p>
+    </div>
+</div>

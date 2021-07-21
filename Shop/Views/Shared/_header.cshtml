@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor;
+@using Shop.Services;
+
+
+<div class="container">
+    <a class="navbar-brand head-font" style="font-size: 22px;" asp-controller="Home" asp-action="Index">Shop15</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link item-font" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home" style="font-size: 18px;"></i> Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link item-font" asp-area="" asp-controller="Category" asp-action="Index"><i class="fas fa-list-ul" style="font-size: 18px;"></i> Category</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link item-font" asp-area="" asp-controller="Products" asp-action="Index"><i class="fas fa-mobile" style="font-size: 18px;"></i> Device</a>
+            </li>
+            <li class="nav-item">
+                @if (HttpContextAccessor.HttpContext.Session.Get<List<ShoppingCart>>(ENV.SessionCard) != null)
+                {
+                    <a class="nav-link item-font" asp-area="" asp-controller="Cart" asp-action="Index">
+                        @{
+                            var count = HttpContextAccessor.HttpContext.Session.Get<List<ShoppingCart>>(ENV.SessionCard).Count();
+                        }
+                        <i class="fas fa-shopping-cart"></i> Cart (@count)
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Cart" asp-action="Index" class="nav-link item-font"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
+                }
+            </li>
+            <li class="nav-item ml-auto">
+                <partial name="_LoginPartial" />
+            </li>
+            @if (User.IsInRole(ENV.AdminRole))
+            {
+                <li class="nav-item">
+                    <a class="nav-link item-font" asp-area="Identity" asp-page="/Account/Register"> Create Admin</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

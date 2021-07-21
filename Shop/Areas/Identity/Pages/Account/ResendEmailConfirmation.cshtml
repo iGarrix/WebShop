@@ -1,0 +1,49 @@
+﻿@page
+@model ResendEmailConfirmationModel
+@{
+    ViewData["Title"] = "Resend email confirmation";
+}
+
+<style>
+    .hei {
+        min-height: 90vh;
+    }
+    .resendbtn {
+        border: 2px dashed #56cc9d;
+        color:white;
+    }
+    .resendbtn:hover {
+        background-color: #56cc9d;
+    }
+    .bordereds {
+        border: 2px solid #56cc9d;
+    }
+</style>
+
+<div class="bs-dark hei">
+    <div class="bs-dark-light1 p-4">
+        <div class="container d-flex justify-content-center">
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+        <h3 class="txt-successfull item-font text-center">Enter you email address</h3>
+    </div>
+    <div class="container mt-5" style="max-width: 40vw;">
+        <form method="post">
+            <div class="form-group txt-light">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" placeholder="index@gmail.com" class="form-control" />
+            </div>
+            <div class="bordereds d-flex p-4 justify-content-lg-between flex-lg-row flex-md-column flex-sm-column rounded bs-dark-light1 mt-5">
+                <div>
+                    <h2 class="txt-light head-font m-0">Go to resend!</h2>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn head-font resendbtn">Resend</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

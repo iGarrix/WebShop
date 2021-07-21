@@ -1,0 +1,54 @@
+﻿@page
+@model DeletePersonalDataModel
+@{
+    ViewData["Title"] = "Delete Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<style>
+    .resendbtn {
+        border: 2px dashed #f3969a;
+        color: white;
+    }
+
+        .resendbtn:hover {
+            background-color: #f3969a;
+        }
+
+    .bordereds {
+        border: 2px solid #f3969a;
+    }
+</style>
+
+<div class="bs-dark">
+    <div class="bs-dark-light1 p-4">
+        <div class="container d-flex justify-content-center">
+            <h1 class="txt-light head-font">@ViewData["Title"]</h1>
+        </div>
+        <p class="txt-danger item-font text-center">
+            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+        </p>
+    </div>
+    <div class="container mt-5" style="max-width: 50vw;">
+        <form id="delete-user" method="post" class="form-group txt-light">
+            @if (Model.RequirePassword)
+            {
+                <div class="form-group">
+                    <label asp-for="Input.Password" class="head-font"></label>
+                    <input asp-for="Input.Password" placeholder="Password" class="form-control item-font" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+            }
+            <div class="bordereds d-flex p-4 justify-content-lg-between flex-lg-row flex-md-column flex-sm-column rounded bs-dark-light1 mt-4">
+                <div>
+                    <h2 class="txt-light head-font m-0">Delete account ...</h2>
+                </div>
+                <button class="btn head-font resendbtn" type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

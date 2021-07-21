@@ -1,0 +1,163 @@
+﻿@model Shop.Models.ViewModels.ProductUserVM;
+
+<style>
+    .section {
+        min-height: 105vh;
+    }
+    .supra {
+        border: 2px dashed white;
+        border-radius: 1rem;
+    }
+
+    .img-card {
+        background-size: cover;
+        max-width: 222px;
+        max-height: 206px;
+    }
+
+    .card-template-hover h6 {
+        transition: .2s;
+    }
+
+    .card-template-hover:hover h6 {
+        color: #56cc9d;
+        text-decoration: underline;
+    }
+
+    .bordered {
+        border-bottom: 2px solid #6cc3d5;
+        transition: .2s;
+    }
+
+    .bordered:hover {
+        border-bottom: 2px solid #56cc9d;
+    }
+</style>
+<form method="post">
+    <input asp-for="AppUser.Id" hidden />
+    <input asp-for="AppUser.Age" hidden />
+    <input asp-for="AppUser.Gender" hidden />
+    <input asp-for="AppUser.PhoneNumber" hidden />
+    <div class="bs-dark">
+        <div class="container section pt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="container-fluid p-0 txt-light">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="AppUser.Name"></label>
+                                    <input asp-for="AppUser.Name" placeholder="Name" class="form-control" />
+                                    <span asp-validation-for="AppUser.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="AppUser.Surname"></label>
+                                    <input asp-for="AppUser.Surname" placeholder="Surname" class="form-control" />
+                                    <span asp-validation-for="AppUser.Surname" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="AppUser.Email"></label>
+                                    <input asp-for="AppUser.Email" placeholder="Phone number" class="form-control" />
+                                    <span asp-validation-for="AppUser.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="AppUser.Country"></label>
+                                    <input asp-for="AppUser.Country" placeholder="Country" class="form-control" />
+                                    <span asp-validation-for="AppUser.Country" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="AppUser.City"></label>
+                                    <input asp-for="AppUser.City" placeholder="Country" class="form-control" />
+                                    <span asp-validation-for="AppUser.City" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="width: 100%" class="container">
+                                <div class="bs-dark-light1 p-4 supra" style="transform: translateY(-100%); width: 100%; margin-top:30vh;">
+                                    <h2 class="txt-successfull head-font mb-4 text-center">Submit...</h2>
+                                    <div class="text-center">
+                                        <input type="submit" asp-route="@Model" value="Buy all" class="btn bs-successfull head-font txt-light" style="font-size: 20px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col overflow-auto pt-4 ml-5" style="max-height: 80vh">
+                    <div class="container-fluid p-0 d-flex">
+                        <div class="row text-center" style="gap: 30px">
+                            @for (int i = 0; i < Model.ProductList.Count; i++)
+                            {
+                                <input type="hidden" asp-for="@Model.ProductList[i].Id" />
+                                <input type="hidden" asp-for="@Model.ProductList[i].Name" />
+                                <div class="card bs-dark-light1 rounded bordered filter hovered @Model.ProductList[i].Category.Name" style="width: 226px">
+                                    <img src="~/Images/Products/@Model.ProductList[i].Image" class="img-card rounded text-center" alt="..." style="width: 222px; height: 206px;">
+                                    <div class="card-body p-3">
+                                        <a class="card-template-hover text-decoration-none"><h6 class="txt-light head-font">@Model.ProductList[i].Name</h6></a>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="d-flex">
+                                            <h3 class="item-font txt-info">@Model.ProductList[i].Price <i class="fas fa-hryvnia"></i></h3>
+                                            <h5 class="item-font txt-danger align-self-end ml-2">uan</h5>
+                                        </div>
+                                        <div class="mt-2">
+                                            @if (Model.ProductList[i].Category.ShowOrder > 20)
+                                            {
+                                                <p class="txt-successfull item-font"><i class="fas fa-dolly"></i> Avaible</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="txt-danger item-font"><i class="fas fa-dolly"></i> Ending</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @*@foreach (var item in Model.ProductList)
+                            {
+                                <input type="hidden" asp-for="@item.Id" />
+                                <input type="hidden" asp-for="@item.Name" />
+                                <div class="card bs-dark-light1 rounded bordered filter hovered @item.Category.Name" style="width: 226px">
+                                    <img src="~/Images/Products/@item.Image" class="img-card rounded text-center" alt="..." style="width: 222px; height: 206px;">
+                                    <div class="card-body p-3">
+                                        <a class="card-template-hover text-decoration-none"><h6 class="txt-light head-font">@item.Name</h6></a>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="d-flex">
+                                            <h3 class="item-font txt-info">@item.Price <i class="fas fa-hryvnia"></i></h3>
+                                            <h5 class="item-font txt-danger align-self-end ml-2">uan</h5>
+                                        </div>
+                                        <div class="mt-2">
+                                            @if (item.Category.ShowOrder > 20)
+                                            {
+                                                <p class="txt-successfull item-font"><i class="fas fa-dolly"></i> Avaible</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="txt-danger item-font"><i class="fas fa-dolly"></i> Ending</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

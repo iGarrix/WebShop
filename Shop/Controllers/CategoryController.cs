@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Data;
 using Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,9 +14,11 @@ namespace Shop.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public CategoryController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
             this._db = db;
+            this._webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -63,6 +67,25 @@ namespace Shop.Controllers
             {
                 return NotFound();
             }
+
+            var products = _db.Products.Where(w => w.CategoryId == category.Id);
+
+            string webRootPath = _webHostEnvironment.WebRootPath;
+            string uploads = webRootPath + ENV.imagepass;
+
+            foreach (var item in products)
+            {
+                string path = Path.Combine(uploads, item.Image);
+                if (item.Image != "null.png")
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                }
+            }
+
+            _db.Products.RemoveRange(products);
 
             _db.Category.Remove(category);
             _db.SaveChanges();
